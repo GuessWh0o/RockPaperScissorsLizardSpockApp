@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="178dp"
+        android:src="@drawable/sheldon_big_right" />
+
+    <TextView
+        android:id="@+id/textview_Dialog"
+        android:layout_width="match_parent"
+        android:layout_height="178dp"
+        android:text="@string/sheldon"
+        android:textSize="24sp"
+        android:paddingTop="20dp"
+        android:paddingRight="16dp"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.Widget.AppCompat.ExpandedMenu.Item"
+        />
+
+</LinearLayout>
