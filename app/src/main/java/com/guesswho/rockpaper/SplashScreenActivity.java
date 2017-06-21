@@ -1,10 +1,13 @@
 package com.guesswho.rockpaper;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
+
+import me.itangqi.waveloadingview.WaveLoadingView;
 
 /**
  * Created by Maksym on 5/20/17.
@@ -12,17 +15,29 @@ import android.widget.ProgressBar;
 
 public class SplashScreenActivity extends AppCompatActivity implements LoadingTask.LoadingTaskFinishedListener {
 
+    WaveLoadingView mWaveLoadingView;
 
-    ProgressBar progressBar;
     private static int SPLASH_TIME_OUT = 4000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashsreen);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        setWaveLoadingView();
 
-        new LoadingTask(progressBar, this).execute();
+
+        new LoadingTask(this, mWaveLoadingView).execute();
+    }
+
+    private void setWaveLoadingView() {
+        mWaveLoadingView = (WaveLoadingView) findViewById(R.id.waveLoadingView);
+        mWaveLoadingView.setShapeType(WaveLoadingView.ShapeType.CIRCLE);
+        mWaveLoadingView.setProgressValue(0);
+        mWaveLoadingView.setAmplitudeRatio(60);
+        mWaveLoadingView.setTopTitleStrokeColor(Color.GREEN);
+        mWaveLoadingView.setTopTitleStrokeWidth(3);
+        mWaveLoadingView.setAnimDuration(3000);
+        mWaveLoadingView.startAnimation();
     }
 
     private void startApp() {
@@ -41,13 +56,11 @@ class LoadingTask extends AsyncTask<String, Integer, Integer> {
     public interface LoadingTaskFinishedListener {
         void onTaskFinished();
     }
-
-    private ProgressBar progressBar;
-
+    private WaveLoadingView mWaveLoadingView;
     private LoadingTaskFinishedListener finishedListener;
 
-    public LoadingTask(ProgressBar progressBar, LoadingTaskFinishedListener finishedListener) {
-        this.progressBar = progressBar;
+    public LoadingTask(LoadingTaskFinishedListener finishedListener, WaveLoadingView waveLoadingView) {
+        mWaveLoadingView = waveLoadingView;
         this.finishedListener = finishedListener;
     }
 
@@ -70,7 +83,7 @@ class LoadingTask extends AsyncTask<String, Integer, Integer> {
 
     private void downloadResources() {
         // We are just imitating some process thats takes a bit of time (loading of resources / downloading)
-        int count = 10;
+        int count = 15;
         for (int i = 0; i < count; i++) {
 
             // Update the progress bar after every step
@@ -88,7 +101,8 @@ class LoadingTask extends AsyncTask<String, Integer, Integer> {
     @Override
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
-        progressBar.setProgress(values[0]); // This is ran on the UI thread so it is ok to update our progress bar ( a UI view ) here
+        mWaveLoadingView.setProgressValue(values[0]);
+//        progressBar.setProgress(values[0]); // This is ran on the UI thread so it is ok to update our progress bar ( a UI view ) here
     }
 
     @Override
