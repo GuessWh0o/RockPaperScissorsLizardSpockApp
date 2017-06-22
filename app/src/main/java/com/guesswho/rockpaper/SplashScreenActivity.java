@@ -17,8 +17,6 @@ public class SplashScreenActivity extends AppCompatActivity implements LoadingTa
 
     WaveLoadingView mWaveLoadingView;
 
-    private static int SPLASH_TIME_OUT = 4000;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +29,8 @@ public class SplashScreenActivity extends AppCompatActivity implements LoadingTa
 
     private void setWaveLoadingView() {
         mWaveLoadingView = (WaveLoadingView) findViewById(R.id.waveLoadingView);
-        mWaveLoadingView.setShapeType(WaveLoadingView.ShapeType.CIRCLE);
         mWaveLoadingView.setProgressValue(0);
+        mWaveLoadingView.setShapeType(WaveLoadingView.ShapeType.CIRCLE);
         mWaveLoadingView.setAmplitudeRatio(60);
         mWaveLoadingView.setTopTitleStrokeColor(Color.GREEN);
         mWaveLoadingView.setTopTitleStrokeWidth(3);
@@ -41,7 +39,7 @@ public class SplashScreenActivity extends AppCompatActivity implements LoadingTa
     }
 
     private void startApp() {
-        Intent homeIntent = new Intent(SplashScreenActivity.this, Game.class);
+        Intent homeIntent = new Intent(SplashScreenActivity.this, MenuActivity.class);
         startActivity(homeIntent);
     }
 
@@ -83,7 +81,7 @@ class LoadingTask extends AsyncTask<String, Integer, Integer> {
 
     private void downloadResources() {
         // We are just imitating some process thats takes a bit of time (loading of resources / downloading)
-        int count = 15;
+        int count = 20;
         for (int i = 0; i < count; i++) {
 
             // Update the progress bar after every step

@@ -1,16 +1,9 @@
 package com.guesswho.rockpaper;
 
-import android.app.Application;
-import android.app.Dialog;
 import android.app.FragmentManager;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Build;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -208,35 +201,6 @@ public class Game extends AppCompatActivity {
         ScoreDialog scoreDialog = new ScoreDialog();
         scoreDialog.setArguments(bundle);
         scoreDialog.show(fm, "Sample Fragment");
-
-
-
-        ////                    public void onClick(DialogInterface dialog, int which) {
-////                        Game.super.recreate();
-////                        // continue with delete
-////                    }
-////                })
-////                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-////                    public void onClick(DialogInterface dialog, int which) {
-////                        finishAffinity();
-////                        // do nothing
-
-//        AlertDialog.Builder builder;
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);
-//        } else {
-//            builder = new AlertDialog.Builder(this);
-//        }
-//        LayoutInflater inflater = this.getLayoutInflater();
-//
-//        builder.setTitle(message)
-////                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-
-////                    }
-////                })
-//                .setIcon(R.drawable.sheldon_ico)
-//                .show();
-//
     }
 
 }
