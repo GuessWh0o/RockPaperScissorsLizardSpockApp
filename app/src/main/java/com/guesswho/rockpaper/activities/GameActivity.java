@@ -1,4 +1,4 @@
-package com.guesswho.rockpaper;
+package com.guesswho.rockpaper.activities;
 
 import android.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -9,11 +9,14 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.guesswho.rockpaper.R;
+import com.guesswho.rockpaper.ScoreDialog;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-public class Game extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity {
 
 
     //Buttons Image
@@ -28,7 +31,7 @@ public class Game extends AppCompatActivity {
     private ImageView img_Player;
 
 //    Context context = getApplicationContext();
-    private static final String TAG = "Game";
+    private static final String TAG = "GameActivity";
 
     private String YOU_WIN = "OHHHH, YOU WIN :(";
     private String YOU_LOSE = "BAZIINGA, YOU LOSE";
@@ -95,7 +98,7 @@ public class Game extends AppCompatActivity {
                     youWin(cpuDecission, 5);
                     break;
                 default:
-                    Toast.makeText(Game.this, "Something is wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GameActivity.this, "Something is wrong", Toast.LENGTH_SHORT).show();
             }
         }
     };

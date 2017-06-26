@@ -1,39 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<FrameLayout
+    android:id="@+id/fragment_facebook"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:tag="FacebookFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="56dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#00f9f9f9">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/textView_FbLoginStatus"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="64dp"
-        android:layout_marginRight="32dp"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
         android:layout_marginLeft="32dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"/>
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="64dp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="24sp"/>
 
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/btn_fbLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_gravity="center"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView_FbLoginStatus"/>
-</android.support.constraint.ConstraintLayout>
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"/>
+</FrameLayout>

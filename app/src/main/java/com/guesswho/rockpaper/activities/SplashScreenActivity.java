@@ -1,11 +1,12 @@
-package com.guesswho.rockpaper;
+package com.guesswho.rockpaper.activities;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ProgressBar;
+
+import com.guesswho.rockpaper.R;
 
 import me.itangqi.waveloadingview.WaveLoadingView;
 

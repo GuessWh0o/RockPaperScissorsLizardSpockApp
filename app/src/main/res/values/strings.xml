@@ -6,4 +6,11 @@
     <string name="btnExit_text">Exit</string>
     <string name="facebook_app_id">103945140230122</string>
     <string name="splashScreen_text">GAME</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile">Profile</string>
+    <string name="logout_text">Logout</string>
+    <string name="title_activity_user_profile">UserProfileActivit</string>
+    <string name="title_activity_fsfsfsfef">fsfsfsfef</string>
 </resources>

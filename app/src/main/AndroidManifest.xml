@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.guesswho.rockpaper">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.guesswho.rockpaper">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -12,21 +11,45 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashScreenActivity"
-            android:noHistory="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+        <activity
+            android:name=".activities.SplashScreenActivity"
+            android:noHistory="true"
+            android:theme="@style/SplashScreenTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <activity android:name=".Game"/>
-        <activity android:name=".MenuActivity"/>
+        <activity
+            android:name=".activities.GameActivity"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity
+            android:name=".activities.MenuActivity"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity
+            android:name=".FacebookLogin"
+            android:theme="@style/AppTheme">
+        </activity>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>
+
+        <activity
+            android:name=".activities.UserProfileActivity"
+            android:label="@string/title_activity_user_profile"
+            android:theme="@style/SplashScreenTheme">
+        </activity>
+
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider"
+            android:exported="true"/>
+
     </application>
 
 </manifest>
