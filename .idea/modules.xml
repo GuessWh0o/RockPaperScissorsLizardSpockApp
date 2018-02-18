@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/RockPaper.iml" filepath="$PROJECT_DIR$/RockPaper.iml" />
       <module fileurl="file://$PROJECT_DIR$/RockPaperScissorsLizardSpockApp.iml" filepath="$PROJECT_DIR$/RockPaperScissorsLizardSpockApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
 </project>
