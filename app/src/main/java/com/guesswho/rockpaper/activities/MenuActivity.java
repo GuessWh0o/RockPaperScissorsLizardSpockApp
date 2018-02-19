@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.guesswho.rockpaper.FacebookLogin;
+import com.guesswho.rockpaper.GoogleLogin;
 import com.guesswho.rockpaper.R;
 import com.guesswho.rockpaper.utils.SharedPrefsUtil;
 
@@ -59,7 +60,7 @@ public class MenuActivity extends AppCompatActivity {
                     startActivity(GameActivity.class);
                     break;
                 case R.id.btn_login:
-                    startFbLogin();
+                    startGoogleLogin();
                     //Logging screen
                     break;
                 case R.id.btn_exit:
@@ -77,6 +78,11 @@ public class MenuActivity extends AppCompatActivity {
     private void startFbLogin() {
         Log.d(TAG, "startFbLogin: ");
         startActivity(new Intent(this, FacebookLogin.class));
+    }
+
+    private void startGoogleLogin() {
+        Log.d(TAG, "startGoogleLogin: ");
+        startActivity(new Intent(this, GoogleLogin.class));
     }
 
     private String checkAndReturnName() {

@@ -45,6 +45,9 @@
             android:authorities="com.facebook.app.FacebookContentProvider"
             android:exported="true"/>
 
+        <activity android:name=".GoogleLogin">
+
+        </activity>
     </application>
 
 </manifest>

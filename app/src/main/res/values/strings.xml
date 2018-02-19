@@ -16,4 +16,10 @@
     <string name="welcome_loser_do_you_want_to_test_your_luck">Welcome, %1$s! \nDo you want to test your luck?</string>
     <string name="welcome">Welcome \n %1$s!</string>
     <string name="login_cancelled">Login Cancelled</string>
+    <string name="desc_google_icon">Google Icon</string>
+    <string name="signed_out">Signed Out</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="title_text">Google Sign-In\nQuickstart</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="signed_in_fmt">Signed in as: %s</string>
 </resources>

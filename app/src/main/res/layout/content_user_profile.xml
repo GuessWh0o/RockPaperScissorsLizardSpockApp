@@ -11,6 +11,7 @@
 
     <ImageView
         android:id="@+id/profilePhoto"
+        android:background="@drawable/user_placeholder"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginLeft="8dp"
