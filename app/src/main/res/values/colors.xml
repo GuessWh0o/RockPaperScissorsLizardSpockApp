@@ -4,4 +4,47 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorGreen">#00FF73</color>
+    <color name="white">#ffffff</color>
+
+    <color name="black">#000000</color>
+    <color name="black4">#121415</color>
+    <color name="black5">#242125</color>
+    <color name="black6">#313641</color>
+
+
+    <item name="fab_fragment_update" type="color">#2baf2b</item>
+    <color name="green_button_unpressed_background">#355b00</color>
+    <color name="green_button_pressed_background">#589700</color>
+    <color name="dark_red">#6F0000</color>
+    <color name="red_button_pressed_background">#b70000</color>
+
+
+    <color name="red_dark_transparent">#796f0000</color>
+
+    <color name="greendark">#669900</color>
+
+    <color name="helpButtonBorder">#AABBBBBB</color>
+    <color name="helpButtonForeground">#DDEEEEEE</color>
+    <color name="help_background">#ff434343</color>
+    <color name="text_white">#FFFFFF</color>
+    <color name="background_brown">#281B1C</color>
+
+    <!--Pink Button Colors-->
+    <color name="pink_noButton">#FF4F63</color>
+    <color name="pink_noButtonLight">#FF303A</color>
+    <!--Green Button Colors-->
+    <color name="greenDark">#41ba7a</color>
+    <color name="greenLight">#03ae3c</color>
+    <!--Orange Button Colors-->
+    <color name="orangeDark">#e64a19</color>
+    <color name="orangeLight">#ff9800</color>
+    <color name="yellow">#ffea00</color>
+    <!--Grey Button Colors-->
+    <color name="greyDark">#404040</color>
+    <color name="greyMedium">#535353</color>
+    <color name="greyLight">#808080</color>
+    <color name="greyRealLight">#d6d2d2</color>
+
+    <color name="greenClear">#0003ae3c</color>
+    <color name="greenBackground">#0F3A3E</color>
 </resources>

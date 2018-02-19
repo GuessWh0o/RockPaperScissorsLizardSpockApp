@@ -5,11 +5,12 @@ package com.guesswho.rockpaper.activities;
  * Email: developerint97@gmail.com
  */
 
-public class Credentials {
+public class Constants {
 
     public final static String prefsName = "MySharedPrefs";
-    public static String facebookName = "Facebook Name";
-    public static String imgUrl = "ImageUrl";
+//    public static String facebookName = "Facebook Name";
+//    public static String imgUrl = "ImageUrl";
 
-    public static name
+    public static String nameKey = "KEY_name";
+    public static String imageUrlKey = "KEY_imageUrl";
 }

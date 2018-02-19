@@ -11,7 +11,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 /**
- * Created by Maksym on 5/21/17.
+ * Created by GuessWh0o on 05.21.2017.
+ * Email: developerint97@gmail.com
  */
 
 public class ScoreDialog extends DialogFragment {

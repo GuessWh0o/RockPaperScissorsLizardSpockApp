@@ -3,18 +3,12 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/fab_fragment_update</item>
+        <item name="colorPrimaryDark">@color/greyDark</item>
+        <item name="colorAccent">@color/yellow</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:windowBackground">@color/background_brown</item>
     </style>
-
-    <style name="SplashScreenTheme" parent="Theme.AppCompat.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
 
     <style name="FacebookLoginButton">
         <item name="android:textSize">14sp</item>

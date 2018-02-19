@@ -1,10 +1,7 @@
 package com.guesswho.rockpaper;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.widget.TextView;
@@ -18,21 +15,21 @@ import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.guesswho.rockpaper.activities.Credentials;
+import com.guesswho.rockpaper.activities.Constants;
 import com.guesswho.rockpaper.activities.UserProfileActivity;
+import com.guesswho.rockpaper.utils.SharedPrefsUtil;
 
 /**
- * Created by Maksym on 6/22/17.
- * Company: Activaire
+ * Created by GuessWh0o on 06.22.2017.
+ * Email: developerint97@gmail.com
  */
 
 public class FacebookLogin extends FragmentActivity {
 
     private static final String TAG = "FacebookLogin";
 
-    SharedPreferences prefs;
-    LoginButton loginButton;
-    TextView textView;
+    private LoginButton loginButton;
+    private TextView textView;
     public CallbackManager callbackManager;
     private AccessTokenTracker accessTokenTracker;
     private ProfileTracker profileTracker;
@@ -40,57 +37,17 @@ public class FacebookLogin extends FragmentActivity {
     public FacebookLogin() {
 
     }
-    private void addToSharedPrefs(String key, String value) {
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString(key, value);
-        editor.commit();
-    }
-
-    private void diplayWelcomeMessage(Profile profile) {
-        if (profile != null) {
-            textView.setText("Welcome \n" + profile.getFirstName());
-        }
-    }
-
-    private void startProfileActivity(Profile profile) {
-        if (profile != null) {
-            Intent intent = new Intent(this, UserProfileActivity.class);
-            intent.putExtra("name", profile.getName());
-            intent.putExtra("imageUrl", profile.getProfilePictureUri(200, 200).toString());
-        }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Profile profile = Profile.getCurrentProfile();
-        diplayWelcomeMessage(profile);
-        if (profile != null) {
-            addToSharedPrefs("name", profile.getName());
-            addToSharedPrefs("imageUrl", profile.getProfilePictureUri(200, 200).toString());
-//            Credentials.facebookName = profile.getName();
-//            Credentials.imgUrl = profile.getProfilePictureUri(200, 200).toString();
-        }
-
-        //  startProfileActivity(profile);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //Pass Result into the CallbackManager
-        callbackManager.onActivityResult(requestCode, resultCode, data);
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.facebook_login_layout);
 
-        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        //prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         callbackManager = CallbackManager.Factory.create();
-        loginButton = (LoginButton) findViewById(R.id.btn_fbLogin);
-        textView = (TextView) findViewById(R.id.textView_FbLoginStatus);
+        loginButton = findViewById(R.id.btn_fbLogin);
+        textView = findViewById(R.id.textView_FbLoginStatus);
         // loginButton.setReadPermissions("user_friends");
         loginButton.setReadPermissions("public_profile");
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -99,22 +56,18 @@ public class FacebookLogin extends FragmentActivity {
                 Log.d(TAG, "onSuccess: " + loginResult.getAccessToken().getUserId());
                 AccessToken accessToken = loginResult.getAccessToken();
                 Profile profile = Profile.getCurrentProfile();
-                diplayWelcomeMessage(profile);
+                displayWelcomeMessage(profile);
                 if (profile != null) {
-                    addToSharedPrefs("name", profile.getName());
-                    addToSharedPrefs("imageUrl", profile.getProfilePictureUri(200, 200).toString());
-//                    Credentials.facebookName = profile.getName();
-//                    Credentials.imgUrl = profile.getProfilePictureUri(200, 200).toString();
+                    addToSharedPrefs(Constants.nameKey, profile.getName());
+                    addToSharedPrefs(Constants.imageUrlKey, profile.getProfilePictureUri(200, 200).toString());
                 }
-//                addToSharedPrefs("name", profile.getName());
-//                addToSharedPrefs("imageUrl", profile.getProfilePictureUri(200, 200).toString());
-                // startProfileActivity(profile);
+                startProfileActivity(profile);
             }
 
             @Override
             public void onCancel() {
                 Log.d(TAG, "onCancel: ");
-                textView.setText("Login Cancelled");
+                textView.setText(R.string.login_cancelled);
             }
 
             @Override
@@ -132,16 +85,12 @@ public class FacebookLogin extends FragmentActivity {
         profileTracker = new ProfileTracker() {
             @Override
             protected void onCurrentProfileChanged(Profile oldProfile, Profile newProfile) {
-                diplayWelcomeMessage(newProfile);
+                displayWelcomeMessage(newProfile);
                 if (newProfile != null) {
-                    addToSharedPrefs("name", newProfile.getName());
-                    addToSharedPrefs("imageUrl", newProfile.getProfilePictureUri(200, 200).toString());
-//                    Credentials.facebookName = newProfile.getName();
-//                    Credentials.imgUrl = newProfile.getProfilePictureUri(200, 200).toString();
+                    addToSharedPrefs(Constants.nameKey, newProfile.getName());
+                    addToSharedPrefs(Constants.imageUrlKey, newProfile.getProfilePictureUri(200, 200).toString());
                 }
-//                addToSharedPrefs("name", newProfile.getName());
-//                addToSharedPrefs("imageUrl", newProfile.getProfilePictureUri(200, 200).toString());
-                //    startProfileActivity(newProfile);
+                startProfileActivity(newProfile);
             }
         };
         accessTokenTracker.startTracking();
@@ -149,9 +98,53 @@ public class FacebookLogin extends FragmentActivity {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        Profile profile = Profile.getCurrentProfile();
+        displayWelcomeMessage(profile);
+        if (profile != null) {
+            addToSharedPrefs(Constants.nameKey, profile.getName());
+            addToSharedPrefs(Constants.imageUrlKey, profile.getProfilePictureUri(200, 200).toString());
+      //      Constants.facebookName = profile.getName();
+      //      Constants.imgUrl = profile.getProfilePictureUri(200, 200).toString();
+        }
+
+        startProfileActivity(profile);
+    }
+
+    @Override
     public void onStop() {
         super.onStop();
         accessTokenTracker.stopTracking();
         profileTracker.stopTracking();
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //Pass Result into the CallbackManager
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+
+
+    private void addToSharedPrefs(String key, String value) {
+        SharedPrefsUtil sharedPrefsUtil = new SharedPrefsUtil(getApplicationContext());
+        sharedPrefsUtil.saveString(key, value);
+    }
+
+    private void displayWelcomeMessage(Profile profile) {
+        if (profile != null) {
+            textView.setText(getString(R.string.welcome, profile.getFirstName()));
+        }
+    }
+
+    private void startProfileActivity(Profile profile) {
+        if (profile != null) {
+            Intent intent = new Intent(this, UserProfileActivity.class);
+            intent.putExtra(Constants.nameKey, profile.getName());
+            intent.putExtra(Constants.imageUrlKey, profile.getProfilePictureUri(200, 200).toString());
+            startActivity(intent);
+        }
     }
 }

@@ -5,14 +5,14 @@
         android:state_pressed="true">
         <shape>
             <solid
-                android:color="@color/colorGreen">
+                android:color="@color/orangeLight">
             </solid>
             <stroke
-                android:width="2dp"
-                android:color="#2f6699">
+                android:width="6dp"
+                android:color="@color/yellow">
             </stroke>
             <corners
-                android:radius="20dp">
+                android:radius="80dp">
             </corners>
             <padding
                 android:bottom="20dp"
@@ -26,14 +26,14 @@
     <item>
         <shape>
             <solid
-                android:color="@color/colorAccent">
+                android:color="@color/orangeDark">
             </solid>
             <stroke
-                android:width="2dp"
-                android:color="#2f6699">
+                android:width="6dp"
+                android:color="@color/orangeLight">
             </stroke>
             <corners
-                android:radius="20dp">
+                android:radius="80dp">
             </corners>
             <padding
                 android:bottom="20dp"

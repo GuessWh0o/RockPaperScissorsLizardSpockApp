@@ -11,7 +11,12 @@ import com.guesswho.rockpaper.R;
 import me.itangqi.waveloadingview.WaveLoadingView;
 
 /**
- * Created by Maksym on 5/20/17.
+ * Created by GuessWh0o on 5/20/17.
+ */
+
+/**
+ * Created by GuessWh0o on 05.20.2017.
+ * Email: developerint97@gmail.com
  */
 
 public class SplashScreenActivity extends AppCompatActivity implements LoadingTask.LoadingTaskFinishedListener {
@@ -58,7 +63,7 @@ class LoadingTask extends AsyncTask<String, Integer, Integer> {
     private WaveLoadingView mWaveLoadingView;
     private LoadingTaskFinishedListener finishedListener;
 
-    public LoadingTask(LoadingTaskFinishedListener finishedListener, WaveLoadingView waveLoadingView) {
+    LoadingTask(LoadingTaskFinishedListener finishedListener, WaveLoadingView waveLoadingView) {
         mWaveLoadingView = waveLoadingView;
         this.finishedListener = finishedListener;
     }

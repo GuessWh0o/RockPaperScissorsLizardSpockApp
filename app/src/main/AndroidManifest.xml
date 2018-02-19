@@ -14,8 +14,7 @@
 
         <activity
             android:name=".activities.SplashScreenActivity"
-            android:noHistory="true"
-            android:theme="@style/SplashScreenTheme">
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -23,16 +22,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.GameActivity"
-            android:theme="@style/AppTheme">
+            android:name=".activities.GameActivity">
         </activity>
         <activity
-            android:name=".activities.MenuActivity"
-            android:theme="@style/AppTheme">
+            android:name=".activities.MenuActivity">
         </activity>
         <activity
-            android:name=".FacebookLogin"
-            android:theme="@style/AppTheme">
+            android:name=".FacebookLogin">
         </activity>
 
         <meta-data
@@ -41,8 +37,7 @@
 
         <activity
             android:name=".activities.UserProfileActivity"
-            android:label="@string/title_activity_user_profile"
-            android:theme="@style/SplashScreenTheme">
+            android:label="@string/title_activity_user_profile">
         </activity>
 
         <provider
