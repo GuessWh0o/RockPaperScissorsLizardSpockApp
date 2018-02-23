@@ -1,21 +1,24 @@
 package com.guesswho.rockpaper.activities;
 
-import android.app.FragmentManager;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.guesswho.rockpaper.DialogFragmentYesNo;
 import com.guesswho.rockpaper.FacebookLogin;
-import com.guesswho.rockpaper.GoogleLogin;
+import com.guesswho.rockpaper.FirebaseLogin;
 import com.guesswho.rockpaper.R;
+import com.guesswho.rockpaper.utils.Constants;
 import com.guesswho.rockpaper.utils.SharedPrefsUtil;
 
 /**
@@ -26,9 +29,9 @@ import com.guesswho.rockpaper.utils.SharedPrefsUtil;
 public class MenuActivity extends AppCompatActivity {
 
     private static final String TAG = "MenuActivity";
-    Button button_Play;
-    Button button_Exit;
-    Button button_Login;
+
+    private TextView TV_welcome;
+    private LinearLayout LL_buttons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,34 +42,38 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void initResources() {
-        button_Play = findViewById(R.id.btn_play);
+        Button button_Play = findViewById(R.id.btn_play);
         button_Play.setOnClickListener(listener);
 
-        button_Login = findViewById(R.id.btn_login);
+        Button button_Login = findViewById(R.id.btn_login);
         button_Login.setOnClickListener(listener);
 
-        button_Exit = findViewById(R.id.btn_exit);
+        Button button_Exit = findViewById(R.id.btn_exit);
         button_Exit.setOnClickListener(listener);
 
         TextView TV_welcome = findViewById(R.id.tv_welcome);
         TV_welcome.setText(getResources().getString(R.string.welcome_loser_do_you_want_to_test_your_luck , checkAndReturnName()));
+
+        LL_buttons = findViewById(R.id.ll_buttons);
+
+        Animation upToDownAnim = AnimationUtils.loadAnimation(this, R.anim.uptodown_transition);
+        Animation downToUpAnim = AnimationUtils.loadAnimation(this, R.anim.downtoup_transition);
+        LL_buttons.setAnimation(downToUpAnim);
+        TV_welcome.setAnimation(upToDownAnim);
     }
 
-    View.OnClickListener listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.btn_play:
-                    startActivity(GameActivity.class);
-                    break;
-                case R.id.btn_login:
-                    startGoogleLogin();
-                    //Logging screen
-                    break;
-                case R.id.btn_exit:
-                    finishAffinity();
-                    break;
-            }
+    View.OnClickListener listener = v -> {
+        switch (v.getId()) {
+            case R.id.btn_play:
+                startActivity(GameActivity.class);
+                break;
+            case R.id.btn_login:
+                startGoogleLogin();
+                //Logging screen
+                break;
+            case R.id.btn_exit:
+                finishAffinity();
+                break;
         }
     };
 
@@ -82,7 +89,7 @@ public class MenuActivity extends AppCompatActivity {
 
     private void startGoogleLogin() {
         Log.d(TAG, "startGoogleLogin: ");
-        startActivity(new Intent(this, GoogleLogin.class));
+        startActivity(new Intent(this, FirebaseLogin.class));
     }
 
     private String checkAndReturnName() {
@@ -108,6 +115,13 @@ public class MenuActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        FragmentManager fm = getSupportFragmentManager();
+        DialogFragmentYesNo yesNoDialog = new DialogFragmentYesNo();
+        yesNoDialog.show(fm, null);
     }
 
 }

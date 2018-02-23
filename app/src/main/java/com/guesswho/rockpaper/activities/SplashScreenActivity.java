@@ -1,47 +1,34 @@
 package com.guesswho.rockpaper.activities;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.guesswho.rockpaper.R;
 
-import me.itangqi.waveloadingview.WaveLoadingView;
-
-/**
- * Created by GuessWh0o on 5/20/17.
- */
+import static java.lang.Thread.sleep;
 
 /**
  * Created by GuessWh0o on 05.20.2017.
  * Email: developerint97@gmail.com
  */
 
-public class SplashScreenActivity extends AppCompatActivity implements LoadingTask.LoadingTaskFinishedListener {
+public class SplashScreenActivity extends AppCompatActivity {
 
-    WaveLoadingView mWaveLoadingView;
+    private TextView TV_splash;
+    private ImageView IV_splash;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashsreen);
-        setWaveLoadingView();
 
-
-        new LoadingTask(this, mWaveLoadingView).execute();
-    }
-
-    private void setWaveLoadingView() {
-        mWaveLoadingView = (WaveLoadingView) findViewById(R.id.waveLoadingView);
-        mWaveLoadingView.setProgressValue(0);
-        mWaveLoadingView.setShapeType(WaveLoadingView.ShapeType.CIRCLE);
-        mWaveLoadingView.setAmplitudeRatio(60);
-        mWaveLoadingView.setTopTitleStrokeColor(Color.GREEN);
-        mWaveLoadingView.setTopTitleStrokeWidth(3);
-        mWaveLoadingView.setAnimDuration(3000);
-        mWaveLoadingView.startAnimation();
+        TV_splash = findViewById(R.id.tv_splash);
+        IV_splash = findViewById(R.id.iv_splash);
     }
 
     private void startApp() {
@@ -50,68 +37,21 @@ public class SplashScreenActivity extends AppCompatActivity implements LoadingTa
     }
 
     @Override
-    public void onTaskFinished() {
-        startApp();
-    }
-}
+    protected void onStart() {
+        super.onStart();
+        Animation splashAnim = AnimationUtils.loadAnimation(this, R.anim.splash_screen_transition);
+        TV_splash.startAnimation(splashAnim);
+        IV_splash.startAnimation(splashAnim);
 
-class LoadingTask extends AsyncTask<String, Integer, Integer> {
-
-    public interface LoadingTaskFinishedListener {
-        void onTaskFinished();
-    }
-    private WaveLoadingView mWaveLoadingView;
-    private LoadingTaskFinishedListener finishedListener;
-
-    LoadingTask(LoadingTaskFinishedListener finishedListener, WaveLoadingView waveLoadingView) {
-        mWaveLoadingView = waveLoadingView;
-        this.finishedListener = finishedListener;
-    }
-
-
-    @Override
-    protected Integer doInBackground(String... params) {
-
-        if (resourcesDontAlreadyExist()) {
-            downloadResources();
-        }
-        return null;
-    }
-
-    private boolean resourcesDontAlreadyExist() {
-        // Here you would query your app's internal state to see if this download had been performed before
-        // Perhaps once checked save this in a shared preference for speed of access next time
-        return true; // returning true so we show the splash every time
-    }
-
-
-    private void downloadResources() {
-        // We are just imitating some process thats takes a bit of time (loading of resources / downloading)
-        int count = 20;
-        for (int i = 0; i < count; i++) {
-
-            // Update the progress bar after every step
-            int progress = (int) ((i / (float) count) * 100);
-            publishProgress(progress);
-
-            // Do some long loading things
+        new Thread(() -> {
             try {
-                Thread.sleep(100);
-            } catch (InterruptedException ignore) {
+                sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                startApp();
+                finish();
             }
-        }
-    }
-
-    @Override
-    protected void onProgressUpdate(Integer... values) {
-        super.onProgressUpdate(values);
-        mWaveLoadingView.setProgressValue(values[0]);
-//        progressBar.setProgress(values[0]); // This is ran on the UI thread so it is ok to update our progress bar ( a UI view ) here
-    }
-
-    @Override
-    protected void onPostExecute(Integer result) {
-        super.onPostExecute(result);
-        finishedListener.onTaskFinished(); // Tell whoever was listening we have finished
+        }).start();
     }
 }

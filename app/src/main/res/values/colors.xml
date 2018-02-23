@@ -11,6 +11,8 @@
     <color name="black5">#242125</color>
     <color name="black6">#313641</color>
 
+    <color name="background_transp">#33383C</color>
+
 
     <item name="fab_fragment_update" type="color">#2baf2b</item>
     <color name="green_button_unpressed_background">#355b00</color>

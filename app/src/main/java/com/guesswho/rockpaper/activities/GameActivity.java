@@ -43,16 +43,7 @@ enum Figure {
 
 
 enum GameResult {
-    WIN(0), LOSE(1), DRAW(2);
-
-    private final int result;
-
-    GameResult(int result) {
-        this.result = result;
-    }
-    int getGameResult() {
-        return result;
-    }
+    WIN, LOSE, DRAW
 }
 
 public class GameActivity extends AppCompatActivity {

@@ -15,7 +15,7 @@ import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.guesswho.rockpaper.activities.Constants;
+import com.guesswho.rockpaper.utils.Constants;
 import com.guesswho.rockpaper.activities.UserProfileActivity;
 import com.guesswho.rockpaper.utils.SharedPrefsUtil;
 

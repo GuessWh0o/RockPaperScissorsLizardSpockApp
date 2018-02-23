@@ -1,4 +1,4 @@
-package com.guesswho.rockpaper.activities;
+package com.guesswho.rockpaper.utils;
 
 /**
  * Created by GuessWh0o on 18.02.2018.
@@ -7,7 +7,7 @@ package com.guesswho.rockpaper.activities;
 
 public class Constants {
 
-    public final static String prefsName = "MySharedPrefs";
+    final static String prefsName = "MySharedPrefs";
 //    public static String facebookName = "Facebook Name";
 //    public static String imgUrl = "ImageUrl";
 

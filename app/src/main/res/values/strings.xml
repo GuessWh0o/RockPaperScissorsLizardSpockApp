@@ -22,4 +22,16 @@
     <string name="title_text">Google Sign-In\nQuickstart</string>
     <string name="disconnect">Disconnect</string>
     <string name="signed_in_fmt">Signed in as: %s</string>
+    <string name="won">Won</string>
+    <string name="lost">Lost</string>
+    <string name="zero">0</string>
+    <string name="exit">Do you want to exit?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="user_name">User Name</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="please_fill_forms">Please fill the forms</string>
 </resources>
