@@ -1,3 +1,7 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="textSize_smallS">18sp</dimen>
+    <dimen name="textSize_bigS">21sp</dimen>
+    <dimen name="textSize_header_smallS">28sp</dimen>
+    <dimen name="button_width_small">200dp</dimen>
 </resources>

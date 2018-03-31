@@ -41,6 +41,8 @@
     <color name="orangeDark">#e64a19</color>
     <color name="orangeLight">#ff9800</color>
     <color name="yellow">#ffea00</color>
+    <color name="yellow_light">#fffbb4</color>
+    <color name="yellow_darker">#edd39c</color>
     <!--Grey Button Colors-->
     <color name="greyDark">#404040</color>
     <color name="greyMedium">#535353</color>

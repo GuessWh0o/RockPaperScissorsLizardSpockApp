@@ -52,14 +52,15 @@ public class MenuActivity extends AppCompatActivity {
         button_Exit.setOnClickListener(listener);
 
         TextView TV_welcome = findViewById(R.id.tv_welcome);
-        TV_welcome.setText(getResources().getString(R.string.welcome_loser_do_you_want_to_test_your_luck , checkAndReturnName()));
+        TV_welcome.setText(getResources().getString(R.string.welcome_loser, checkAndReturnName()));
 
         LL_buttons = findViewById(R.id.ll_buttons);
+        LinearLayout LL_texts = findViewById(R.id.ll_welcome);
 
         Animation upToDownAnim = AnimationUtils.loadAnimation(this, R.anim.uptodown_transition);
         Animation downToUpAnim = AnimationUtils.loadAnimation(this, R.anim.downtoup_transition);
         LL_buttons.setAnimation(downToUpAnim);
-        TV_welcome.setAnimation(upToDownAnim);
+        LL_texts.setAnimation(upToDownAnim);
     }
 
     View.OnClickListener listener = v -> {

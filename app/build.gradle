@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.2"
+    compileSdkVersion project.ext.myCompileSdkVersion
+    buildToolsVersion project.ext.myBuildToolsVersion
     defaultConfig {
         applicationId "com.guesswho.rockpaper"
-        minSdkVersion 21
-        targetSdkVersion 27
+        minSdkVersion project.ext.myMinSdkVersion
+        targetSdkVersion project.ext.myTargetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -21,6 +21,7 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
+    buildToolsVersion '27.0.3'
 }
 
 repositories {
@@ -29,22 +30,22 @@ repositories {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.facebook.android:facebook-android-sdk:4.30.0'
-    compile 'com.android.support:appcompat-v7:27.0.2'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
-    implementation 'com.android.support:design:27.0.2'
+    implementation 'com.facebook.android:facebook-android-sdk:4.30.0'
+    implementation "com.android.support:appcompat-v7:$project.ext.myAppSupportVersion"
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    implementation "com.android.support:design:$project.ext.myAppSupportVersion"
 
 
     // Dependency for Google Sign-In
-    compile 'com.google.android.gms:play-services-auth:11.8.0'
-    implementation 'com.google.firebase:firebase-auth:11.8.0'
-    implementation 'com.google.firebase:firebase-core:11.8.0'
-    implementation 'com.google.firebase:firebase-messaging:11.8.0'
-    implementation 'com.google.firebase:firebase-database:11.8.0'
+    compile "com.google.android.gms:play-services-auth:$project.ext.myFirebaseVersion"
+    implementation "com.google.firebase:firebase-auth:$project.ext.myFirebaseVersion"
+    implementation "com.google.firebase:firebase-core:$project.ext.myFirebaseVersion"
+    implementation "com.google.firebase:firebase-messaging:$project.ext.myFirebaseVersion"
+    implementation "com.google.firebase:firebase-database:$project.ext.myFirebaseVersion"
     apply plugin: 'com.google.gms.google-services'
 }

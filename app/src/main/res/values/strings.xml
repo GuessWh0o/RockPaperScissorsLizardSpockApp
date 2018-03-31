@@ -13,7 +13,8 @@
     <string name="logout_text">Logout</string>
     <string name="title_activity_user_profile">UserProfileActivity</string>
     <string name="profile_name">Profile Name</string>
-    <string name="welcome_loser_do_you_want_to_test_your_luck">Welcome, %1$s! \nDo you want to test your luck?</string>
+    <string name="welcome_loser">Welcome, \n%1$s!</string>
+    <string name="do_you_want_to_test">Do you want to test your luck?</string>
     <string name="welcome">Welcome \n %1$s!</string>
     <string name="login_cancelled">Login Cancelled</string>
     <string name="desc_google_icon">Google Icon</string>
